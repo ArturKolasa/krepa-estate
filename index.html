@@ -1,0 +1,2299 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krępa Nature Estate — Boutique Investment Resort</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest-deep: #1a2e1f;
+            --forest: #2d4a35;
+            --forest-light: #3d6b4a;
+            --gold: #c9a96e;
+            --gold-light: #dcc495;
+            --gold-dark: #a88a4e;
+            --cream: #f5f0e8;
+            --cream-dark: #e8e0d2;
+            --charcoal: #2d2d2d;
+            --charcoal-light: #4a4a4a;
+            --white: #ffffff;
+            --text: #333333;
+            --text-light: #666666;
+            --overlay: rgba(26, 46, 31, 0.75);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--white);
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        /* ─── NAVIGATION ─── */
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.25rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(26, 46, 31, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 0.75rem 3rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .nav-logo span {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 300;
+            letter-spacing: 5px;
+            color: var(--gold-light);
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--gold);
+            color: var(--gold) !important;
+            font-size: 0.75rem !important;
+            letter-spacing: 2px;
+            transition: all 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold);
+            color: var(--forest-deep) !important;
+        }
+
+        /* ─── HERO ─── */
+
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: var(--forest-deep);
+            /* PLACEHOLDER: hero-bg.jpg — Zdjęcie z drona: nowoczesny boutique hotel w polskim lesie, złota godzina, budynek wtopiony w naturę, widok z lotu ptaka */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-bg .placeholder-label {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.6);
+            color: var(--gold);
+            padding: 8px 16px;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            border: 1px solid var(--gold-dark);
+            z-index: 5;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(26, 46, 31, 0.4) 0%,
+                rgba(26, 46, 31, 0.7) 50%,
+                rgba(26, 46, 31, 0.9) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid var(--gold);
+            padding: 0.4rem 1.5rem;
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            color: var(--white);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 .accent {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero-tagline {
+            font-size: 0.85rem;
+            color: var(--cream-dark);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+
+        .hero-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-metric {
+            text-align: center;
+        }
+
+        .hero-metric .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            display: block;
+        }
+
+        .hero-metric .label {
+            font-size: 0.65rem;
+            color: var(--cream-dark);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--gold);
+            color: var(--forest-deep);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .hero-cta:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201, 169, 110, 0.3);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .scroll-indicator .line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            margin: 0 auto;
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator .text {
+            font-size: 0.6rem;
+            color: var(--gold-light);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* ─── SECTIONS COMMON ─── */
+
+        section {
+            padding: 7rem 3rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ─── IMAGE PLACEHOLDER ─── */
+
+        .img-placeholder {
+            background: linear-gradient(135deg, var(--cream-dark) 0%, var(--cream) 100%);
+            border: 2px dashed var(--gold-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .img-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 1px solid var(--gold-light);
+            opacity: 0.4;
+        }
+
+        .img-placeholder .ph-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.4;
+        }
+
+        .img-placeholder .ph-label {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .img-placeholder .ph-desc {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            max-width: 400px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .img-real {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .img-placeholder .ph-size {
+            font-size: 0.6rem;
+            color: var(--charcoal-light);
+            margin-top: 0.75rem;
+            letter-spacing: 1px;
+            opacity: 0.5;
+        }
+
+        /* ─── VISION ─── */
+
+        .vision {
+            background: var(--white);
+        }
+
+        .vision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .vision-image .img-placeholder {
+            aspect-ratio: 4/5;
+            border-radius: 4px;
+        }
+
+        .vision-text h3 {
+            font-size: 1.6rem;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+        }
+
+        .vision-text p {
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+
+        .vision-text .signature {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--cream-dark);
+        }
+
+        .vision-text .signature .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--charcoal);
+        }
+
+        .vision-text .signature .title {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+
+        /* ─── LOCATION ─── */
+
+        .location {
+            background: var(--forest-deep);
+            color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location .section-title {
+            color: var(--cream);
+        }
+
+        .location .section-desc {
+            color: var(--cream-dark);
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .location-map .img-placeholder {
+            aspect-ratio: 4/3;
+            min-height: 350px;
+            background: linear-gradient(135deg, rgba(45,74,53,0.3), rgba(26,46,31,0.5));
+            border-color: var(--forest-light);
+        }
+
+        .location-map .img-placeholder .ph-label {
+            color: var(--gold);
+        }
+
+        .location-map .img-placeholder .ph-desc {
+            color: var(--cream-dark);
+        }
+
+        .location-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .location-stat {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .location-stat .icon {
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .location-stat h4 {
+            font-size: 1rem;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .location-stat p {
+            font-size: 0.85rem;
+            color: var(--cream-dark);
+            line-height: 1.6;
+        }
+
+        /* ─── INVESTMENT ─── */
+
+        .investment {
+            background: var(--cream);
+        }
+
+        .invest-highlights {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .invest-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border: 1px solid var(--cream-dark);
+            transition: all 0.3s;
+        }
+
+        .invest-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .invest-card .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .invest-card .unit {
+            font-size: 1.2rem;
+            color: var(--gold-dark);
+        }
+
+        .invest-card .card-label {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .invest-card .card-desc {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .invest-table-wrapper {
+            background: var(--white);
+            padding: 3rem;
+            border: 1px solid var(--cream-dark);
+        }
+
+        .invest-table-wrapper h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .invest-table-wrapper .table-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .invest-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .invest-table thead th {
+            text-align: left;
+            padding: 1rem;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            border-bottom: 2px solid var(--gold);
+            font-weight: 500;
+        }
+
+        .invest-table tbody td {
+            padding: 1rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--cream-dark);
+            color: var(--text);
+        }
+
+        .invest-table tbody tr:hover {
+            background: var(--cream);
+        }
+
+        .invest-table .price {
+            font-weight: 600;
+            color: var(--forest);
+        }
+
+        .invest-table .yield {
+            color: var(--gold-dark);
+            font-weight: 600;
+        }
+
+        .invest-table .badge {
+            display: inline-block;
+            padding: 0.2rem 0.75rem;
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 1px solid;
+        }
+
+        .badge-available {
+            color: var(--forest);
+            border-color: var(--forest-light);
+            background: rgba(61, 107, 74, 0.08);
+        }
+
+        .badge-reserved {
+            color: var(--gold-dark);
+            border-color: var(--gold);
+            background: rgba(201, 169, 110, 0.08);
+        }
+
+        .badge-sold {
+            color: var(--text-light);
+            border-color: var(--cream-dark);
+            background: var(--cream);
+        }
+
+        /* ─── UNITS / APARTAMENTY ─── */
+
+        .units {
+            background: var(--white);
+        }
+
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .unit-card {
+            border: 1px solid var(--cream-dark);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .unit-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .unit-card .img-placeholder {
+            aspect-ratio: 4/3;
+            border: none;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .unit-card-body {
+            padding: 2rem;
+        }
+
+        .unit-card-body .unit-type {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .unit-card-body h3 {
+            font-size: 1.3rem;
+            color: var(--charcoal);
+            margin-bottom: 0.75rem;
+        }
+
+        .unit-card-body p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .unit-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--cream-dark);
+        }
+
+        .unit-spec {
+            font-size: 0.75rem;
+        }
+
+        .unit-spec .spec-label {
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.6rem;
+        }
+
+        .unit-spec .spec-value {
+            color: var(--charcoal);
+            font-weight: 500;
+            margin-top: 0.2rem;
+        }
+
+        /* ─── AMENITIES ─── */
+
+        .amenities {
+            background: var(--cream);
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .amenity-block {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .amenity-block .img-placeholder {
+            height: 350px;
+        }
+
+        .amenity-block .amenity-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(26,46,31,0.9), transparent);
+        }
+
+        .amenity-block .amenity-overlay h3 {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .amenity-block .amenity-overlay p {
+            color: var(--cream-dark);
+            font-size: 0.8rem;
+        }
+
+        .amenities-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .amenity-item {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: var(--white);
+            border: 1px solid var(--cream-dark);
+        }
+
+        .amenity-item .a-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .amenity-item h4 {
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            color: var(--charcoal);
+            margin-bottom: 0.3rem;
+        }
+
+        .amenity-item p {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        /* ─── SUSTAINABILITY ─── */
+
+        .sustainability {
+            background: var(--forest-deep);
+            color: var(--cream);
+        }
+
+        .sustainability .section-title {
+            color: var(--cream);
+        }
+
+        .sustainability .section-desc {
+            color: var(--cream-dark);
+        }
+
+        .sustain-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .sustain-card {
+            padding: 2.5rem;
+            border: 1px solid var(--forest-light);
+            transition: border-color 0.3s;
+        }
+
+        .sustain-card:hover {
+            border-color: var(--gold);
+        }
+
+        .sustain-card .s-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .sustain-card h3 {
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .sustain-card p {
+            font-size: 0.85rem;
+            color: var(--cream-dark);
+            line-height: 1.6;
+        }
+
+        /* ─── TIMELINE ─── */
+
+        .timeline-section {
+            background: var(--white);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), var(--cream-dark));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-item .tl-content {
+            width: calc(50% - 40px);
+            padding: 2rem;
+            background: var(--cream);
+            border: 1px solid var(--cream-dark);
+        }
+
+        .timeline-item:nth-child(odd) .tl-content {
+            margin-right: auto;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .tl-content {
+            margin-left: auto;
+            text-align: left;
+        }
+
+        .timeline-item .tl-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 2px var(--gold);
+            z-index: 5;
+        }
+
+        .timeline-item .tl-date {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .timeline-item .tl-title {
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .tl-desc {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .timeline-item.active .tl-dot {
+            background: var(--forest);
+            box-shadow: 0 0 0 2px var(--forest), 0 0 0 6px rgba(61,107,74,0.2);
+        }
+
+        .timeline-item.active .tl-content {
+            border-color: var(--forest-light);
+            background: rgba(61,107,74,0.05);
+        }
+
+        /* ─── TEAM ─── */
+
+        .team {
+            background: var(--cream);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: var(--white);
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid var(--cream-dark);
+        }
+
+        .team-card .team-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+        }
+
+        .team-card .team-photo .img-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border-width: 1px;
+        }
+
+        .team-card h3 {
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            margin-bottom: 0.3rem;
+        }
+
+        .team-card .team-role {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .team-card p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ─── GALLERY ─── */
+
+        .gallery {
+            background: var(--white);
+            padding: 7rem 0;
+        }
+
+        .gallery .section-header {
+            padding: 0 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: 80px;
+            gap: 0.5rem;
+            padding: 0 3rem;
+        }
+
+        .gallery-item .img-placeholder {
+            height: 100%;
+        }
+
+        /* 21:9 panoramic — spans 8 cols, 3 rows */
+        .gallery-item.ratio-21-9 {
+            grid-column: span 8;
+            grid-row: span 3;
+        }
+
+        /* 4:5 portrait — spans 4 cols, 5 rows */
+        .gallery-item.ratio-4-5 {
+            grid-column: span 4;
+            grid-row: span 5;
+        }
+
+        /* 1:1 square — spans 4 cols, 4 rows */
+        .gallery-item.ratio-1-1 {
+            grid-column: span 4;
+            grid-row: span 4;
+        }
+
+        /* 4:3 landscape — spans 4 cols, 3 rows */
+        .gallery-item.ratio-4-3 {
+            grid-column: span 4;
+            grid-row: span 3;
+        }
+
+        /* 16:9 wide — spans 8 cols, 3 rows */
+        .gallery-item.ratio-16-9 {
+            grid-column: span 8;
+            grid-row: span 3;
+        }
+
+        /* ─── FINANCIAL MODEL ─── */
+
+        .financial {
+            background: var(--forest-deep);
+            color: var(--cream);
+        }
+
+        .financial .section-title {
+            color: var(--cream);
+        }
+
+        .financial .section-desc {
+            color: var(--cream-dark);
+        }
+
+        .fin-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .fin-block {
+            padding: 2.5rem;
+            border: 1px solid var(--forest-light);
+        }
+
+        .fin-block h3 {
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .fin-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(61,107,74,0.3);
+            font-size: 0.85rem;
+        }
+
+        .fin-row .fin-label {
+            color: var(--cream-dark);
+        }
+
+        .fin-row .fin-value {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .fin-note {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(61,107,74,0.15);
+            border-left: 3px solid var(--gold);
+            font-size: 0.8rem;
+            color: var(--cream-dark);
+            line-height: 1.6;
+        }
+
+        /* ─── CTA / CONTACT ─── */
+
+        .contact {
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .contact .section-title {
+            font-size: 3rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        .form-input {
+            padding: 1rem 1.25rem;
+            border: 1px solid var(--cream-dark);
+            background: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text);
+            transition: border-color 0.3s;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: var(--gold);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-light);
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-select {
+            appearance: none;
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23666' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        .form-submit {
+            display: inline-block;
+            padding: 1rem 4rem;
+            background: var(--forest-deep);
+            color: var(--gold);
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .form-submit:hover {
+            background: var(--forest);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(26,46,31,0.2);
+        }
+
+        .contact-note {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        /* ─── LEGAL ─── */
+
+        .legal {
+            background: var(--charcoal);
+            color: var(--text-light);
+            padding: 3rem;
+        }
+
+        .legal-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .legal h4 {
+            color: var(--gold);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        .legal p {
+            font-size: 0.7rem;
+            line-height: 1.8;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        .legal .legal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* ─── FOOTER ─── */
+
+        .footer {
+            background: var(--forest-deep);
+            padding: 4rem 3rem 2rem;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--forest-light);
+        }
+
+        .footer-brand .nav-logo {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.8rem;
+            color: var(--cream-dark);
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.25rem;
+            font-weight: 500;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col a {
+            color: var(--cream-dark);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.7rem;
+            color: var(--forest-light);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--forest-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cream-dark);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ─── COOKIE BAR ─── */
+
+        .cookie-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--charcoal);
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 999;
+            border-top: 1px solid var(--forest-light);
+            transform: translateY(0);
+            transition: transform 0.4s;
+        }
+
+        .cookie-bar.hidden {
+            transform: translateY(100%);
+        }
+
+        .cookie-bar p {
+            font-size: 0.75rem;
+            color: var(--cream-dark);
+        }
+
+        .cookie-bar .cookie-btns {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .cookie-btn {
+            padding: 0.5rem 1.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .cookie-accept {
+            background: var(--gold);
+            color: var(--forest-deep);
+        }
+
+        .cookie-decline {
+            background: transparent;
+            color: var(--cream-dark);
+            border: 1px solid var(--forest-light);
+        }
+
+        /* ─── RESPONSIVE ─── */
+
+        @media (max-width: 1024px) {
+            .invest-highlights { grid-template-columns: repeat(2, 1fr); }
+            .units-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(8, 1fr); }
+            .gallery-item.ratio-21-9 { grid-column: span 8; }
+            .gallery-item.ratio-16-9 { grid-column: span 8; }
+            .gallery-item.ratio-4-5 { grid-column: span 4; }
+            .gallery-item.ratio-1-1 { grid-column: span 4; }
+            .gallery-item.ratio-4-3 { grid-column: span 4; }
+            .amenities-list { grid-template-columns: repeat(2, 1fr); }
+            .fin-grid { grid-template-columns: 1fr; }
+            .footer-top { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; letter-spacing: 4px; }
+            .hero-metrics { flex-direction: column; gap: 2rem; }
+            section { padding: 4rem 1.5rem; }
+            .section-title { font-size: 2rem; }
+            .vision-grid,
+            .location-grid { grid-template-columns: 1fr; }
+            .invest-highlights { grid-template-columns: 1fr; }
+            .units-grid { grid-template-columns: 1fr; }
+            .amenities-grid { grid-template-columns: 1fr; }
+            .sustain-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 60px; }
+            .gallery-item.ratio-21-9,
+            .gallery-item.ratio-16-9 { grid-column: span 4; grid-row: span 3; }
+            .gallery-item.ratio-4-5 { grid-column: span 2; grid-row: span 4; }
+            .gallery-item.ratio-1-1 { grid-column: span 2; grid-row: span 3; }
+            .gallery-item.ratio-4-3 { grid-column: span 2; grid-row: span 2; }
+            .form-row { grid-template-columns: 1fr; }
+            .timeline-item { flex-direction: column !important; }
+            .timeline-item .tl-content { width: 100%; text-align: left !important; margin-left: 30px; }
+            .timeline::before { left: 10px; }
+            .timeline-item .tl-dot { left: 10px; }
+            .footer-top { grid-template-columns: 1fr; }
+            .legal .legal-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav" id="nav">
+        <div class="nav-logo">
+            Krępa Estate
+            <span>Boutique Investment Resort</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#wizja">Wizja</a></li>
+            <li><a href="#lokalizacja">Lokalizacja</a></li>
+            <li><a href="#inwestycja">Inwestycja</a></li>
+            <li><a href="#apartamenty">Apartamenty</a></li>
+            <li><a href="#udogodnienia">Udogodnienia</a></li>
+            <li><a href="#harmonogram">Harmonogram</a></li>
+            <li><a href="#kontakt" class="nav-cta">Zainwestuj</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <!-- PLACEHOLDER: Zdjęcie z drona — nowoczesny boutique hotel w polskim lesie, otoczony sosnami i brzozami, złota godzina, architektura wtopiona w naturę, widok z góry. Styl: Scandinavian modern meets Polish countryside. Format: 1920x1080 -->
+            <div class="placeholder-label">HERO [21:9] Widok z drona na hotel w lesie, golden hour</div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Ekskluzywna Inwestycja w Naturę</div>
+            <h1>Krępa <span class="accent">Estate</span></h1>
+            <div class="hero-subtitle">Boutique Investment Resort</div>
+            <div class="hero-tagline">Twoja odskocznią od miasta. Twoja inwestycja w ciszę.</div>
+            <div class="hero-metrics">
+                <div class="hero-metric">
+                    <span class="number">8-12%</span>
+                    <span class="label">Prognozowany zwrot roczny</span>
+                </div>
+                <div class="hero-metric">
+                    <span class="number">2.5 ha</span>
+                    <span class="label">Teren inwestycji</span>
+                </div>
+                <div class="hero-metric">
+                    <span class="number">90 min</span>
+                    <span class="label">Od centrum Warszawy</span>
+                </div>
+            </div>
+            <a href="#kontakt" class="hero-cta">Poznaj szczegóły inwestycji</a>
+        </div>
+        <div class="scroll-indicator">
+            <div class="line"></div>
+            <div class="text">Przewiń</div>
+        </div>
+    </section>
+
+    <!-- VISION -->
+    <section class="vision" id="wizja">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Wizja projektu</div>
+                <h2 class="section-title">Miejsce, które zaprojektowała natura. My je tylko odkryliśmy.</h2>
+            </div>
+            <div class="vision-grid">
+                <div class="vision-image">
+                    <img src="golden_hour.png" alt="Wizja Krępa Estate — poranek nad polską wsią" class="img-real" style="aspect-ratio: 4/5; border-radius: 4px;">
+                </div>
+                <div class="vision-text">
+                    <h3>Gdzie wielkomiejskie ambicje spotykają ciszę lasu</h3>
+                    <p>
+                        Krępa Nature Estate to nie kolejny resort na mapie. To odpowiedź na pytanie, które zadaje sobie coraz więcej ludzi sukcesu: <em>czy mogę mieć miejsce, które pracuje na mnie, gdy ja odpoczywam?</em>
+                    </p>
+                    <p>
+                        Zlokalizowany w sercu polskiej natury, otoczony lasami iglastymi i łąkami, nasz projekt łączy to, co najlepsze z dwóch światów: spokój wiejskiego krajobrazu i realny zwrot z inwestycji w jednym z najszybciej rosnących segmentów rynku nieruchomości premium.
+                    </p>
+                    <p>
+                        Każdy apartament inwestycyjny jest zaprojektowany tak, aby generować przychód przez cały rok, jednocześnie będąc Twoim osobistym azylem, gdy tego potrzebujesz.
+                    </p>
+                    <div class="signature">
+                        <div class="name">Zespół Krępa Estate</div>
+                        <div class="title">Deweloper &amp; Zarządzający Projektem</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section class="location" id="lokalizacja">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Lokalizacja</div>
+                <h2 class="section-title">90 minut od Warszawy. Lata świetlne od hałasu.</h2>
+                <p class="section-desc">Krępa to miejscowość, która zachowała to, co reszta kraju straciła: autentyczny kontakt z naturą, ciszę i przestrzeń. Idealna lokalizacja dla inwestycji typu boutique hospitality.</p>
+            </div>
+            <div class="location-grid">
+                <div class="location-map">
+                    <img src="mapa.png" alt="Mapa — trasa Warszawa do Krępa Estate" class="img-real" style="aspect-ratio: 4/3; min-height: 350px; border-radius: 4px;">
+                </div>
+                <div class="location-details">
+                    <div class="location-stat">
+                        <div class="icon">🚗</div>
+                        <div>
+                            <h4>90 min od centrum Warszawy</h4>
+                            <p>Szybki dojazd trasą S8. Wystarczająco blisko, żeby przyjechać na weekend. Wystarczająco daleko, żeby zapomnieć o mieście.</p>
+                        </div>
+                    </div>
+                    <div class="location-stat">
+                        <div class="icon">🌲</div>
+                        <div>
+                            <h4>Kompleks Leśny Krępa</h4>
+                            <p>Ponad 200 ha lasów iglastych i mieszanych w bezpośrednim sąsiedztwie. Szlaki piesze, rowerowe i konne bezpośrednio z terenu resortu.</p>
+                        </div>
+                    </div>
+                    <div class="location-stat">
+                        <div class="icon">🏘️</div>
+                        <div>
+                            <h4>Autentyczna polska wieś</h4>
+                            <p>Lokalna społeczność, tradycyjne gospodarstwa, kury na wolnym wybiegu, sady owocowe. To, czego szukają goście zmęczeni sztucznością.</p>
+                        </div>
+                    </div>
+                    <div class="location-stat">
+                        <div class="icon">📈</div>
+                        <div>
+                            <h4>Strefa wzrostu wartości</h4>
+                            <p>Region objęty programem rozwoju turystyki zrównoważonej. Wartość nieruchomości w promieniu 100 km od Warszawy rośnie średnio 12% rocznie.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVESTMENT HIGHLIGHTS -->
+    <section class="investment" id="inwestycja">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Model inwestycyjny</div>
+                <h2 class="section-title">Liczby, które mówią same za siebie</h2>
+                <p class="section-desc">Przemyślany model finansowy oparty na danych rynkowych, analizie popytu i wieloletnim doświadczeniu w zarządzaniu nieruchomościami premium.</p>
+            </div>
+
+            <div class="invest-highlights">
+                <div class="invest-card">
+                    <div class="number">8-12<span class="unit">%</span></div>
+                    <div class="card-label">Roczna stopa zwrotu</div>
+                    <div class="card-desc">Prognozowany zwrot z najmu krótkoterminowego i zarządzania operacyjnego.</div>
+                </div>
+                <div class="invest-card">
+                    <div class="number">24</div>
+                    <div class="card-label">Apartamenty inwestycyjne</div>
+                    <div class="card-desc">Ograniczona pula jednostek gwarantująca ekskluzywność i kameralny charakter.</div>
+                </div>
+                <div class="invest-card">
+                    <div class="number">85<span class="unit">%</span></div>
+                    <div class="card-label">Prognozowane obłożenie</div>
+                    <div class="card-desc">Bazując na analizie porównywalnych obiektów w segmencie premium nature retreat.</div>
+                </div>
+                <div class="invest-card">
+                    <div class="number">0</div>
+                    <div class="card-label">Twojego czasu na zarządzanie</div>
+                    <div class="card-desc">Pełen serwis operacyjny: od rezerwacji, przez sprzątanie, po konserwację. Ty inwestujesz, my zarządzamy.</div>
+                </div>
+            </div>
+
+            <div class="invest-table-wrapper">
+                <h3>Struktura oferty inwestycyjnej</h3>
+                <p class="table-subtitle">Ceny netto. Wyposażenie w standardzie premium. Możliwość personalizacji wnętrz.</p>
+                <table class="invest-table">
+                    <thead>
+                        <tr>
+                            <th>Typ apartamentu</th>
+                            <th>Metraż</th>
+                            <th>Cena od</th>
+                            <th>Prognozowany yield</th>
+                            <th>Dostępność</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Studio Forest View</td>
+                            <td>32 m²</td>
+                            <td class="price">389 000 PLN</td>
+                            <td class="yield">9.2%</td>
+                            <td><span class="badge badge-available">Dostępne</span></td>
+                        </tr>
+                        <tr>
+                            <td>Suite Nature</td>
+                            <td>48 m²</td>
+                            <td class="price">549 000 PLN</td>
+                            <td class="yield">10.1%</td>
+                            <td><span class="badge badge-available">Dostępne</span></td>
+                        </tr>
+                        <tr>
+                            <td>Premium Retreat</td>
+                            <td>65 m²</td>
+                            <td class="price">729 000 PLN</td>
+                            <td class="yield">11.4%</td>
+                            <td><span class="badge badge-reserved">Rezerwacja</span></td>
+                        </tr>
+                        <tr>
+                            <td>Penthouse Canopy</td>
+                            <td>95 m²</td>
+                            <td class="price">1 190 000 PLN</td>
+                            <td class="yield">12.1%</td>
+                            <td><span class="badge badge-sold">Sprzedane</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- UNITS -->
+    <section class="units" id="apartamenty">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Typy apartamentów</div>
+                <h2 class="section-title">Zaprojektowane z myślą o naturze. Zbudowane z myślą o zysku.</h2>
+                <p class="section-desc">Każdy apartament to samodzielna jednostka inwestycyjna z pełnym wyposażeniem, gotowa do natychmiastowego włączenia do programu najmu.</p>
+            </div>
+            <div class="units-grid">
+                <div class="unit-card">
+                    <img src="freepik_interior-of-a-compact-lux_2816515808.png" alt="Studio Forest View — wnętrze" class="img-real">
+                    <div class="unit-card-body">
+                        <div class="unit-type">Typ A</div>
+                        <h3>Studio Forest View</h3>
+                        <p>Kompaktowa elegancja z panoramicznym widokiem na las. Idealne na inwestycję z najwyższą rotacją gości.</p>
+                        <div class="unit-specs">
+                            <div class="unit-spec">
+                                <div class="spec-label">Metraż</div>
+                                <div class="spec-value">32 m²</div>
+                            </div>
+                            <div class="unit-spec">
+                                <div class="spec-label">Cena od</div>
+                                <div class="spec-value">389 000 PLN</div>
+                            </div>
+                            <div class="unit-spec">
+                                <div class="spec-label">Osoby</div>
+                                <div class="spec-value">2</div>
+                            </div>
+                            <div class="unit-spec">
+                                <div class="spec-label">Yield</div>
+                                <div class="spec-value">9.2%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="unit-card">
+                    <img src="freepik_spacious-luxury-hotel-sui_2816516462.png" alt="Suite Nature — wnętrze" class="img-real">
+                    <div class="unit-card-body">
+                        <div class="unit-type">Typ B</div>
+                        <h3>Suite Nature</h3>
+                        <p>Przestronny apartament z osobną sypialnią i tarasem. Równowaga między komfortem gościa a zwrotem inwestora.</p>
+                        <div class="unit-specs">
+                            <div class="unit-spec">
+                                <div class="spec-label">Metraż</div>
+                                <div class="spec-value">48 m²</div>
+                            </div>
+                            <div class="unit-spec">
+                                <div class="spec-label">Cena od</div>
+                                <div class="spec-value">549 000 PLN</div>
+                            </div>
+                            <div class="unit-spec">
+                                <div class="spec-label">Osoby</div>
+                                <div class="spec-value">2-4</div>
+                            </div>
+                            <div class="unit-spec">
+                                <div class="spec-label">Yield</div>
+                                <div class="spec-value">10.1%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="unit-card">
+                    <img src="freepik_luxury-twobedroom-hotel-p_2816517083.png" alt="Premium Retreat — wnętrze" class="img-real">
+                    <div class="unit-card-body">
+                        <div class="unit-type">Typ C</div>
+                        <h3>Premium Retreat</h3>
+                        <p>Flagowy apartament z dwiema sypialniami i prywatnym jacuzzi na tarasie. Dla gości oczekujących czegoś więcej.</p>
+                        <div class="unit-specs">
+                            <div class="unit-spec">
+                                <div class="spec-label">Metraż</div>
+                                <div class="spec-value">65 m²</div>
+                            </div>
+                            <div class="unit-spec">
+                                <div class="spec-label">Cena od</div>
+                                <div class="spec-value">729 000 PLN</div>
+                            </div>
+                            <div class="unit-spec">
+                                <div class="spec-label">Osoby</div>
+                                <div class="spec-value">4-6</div>
+                            </div>
+                            <div class="unit-spec">
+                                <div class="spec-label">Yield</div>
+                                <div class="spec-value">11.4%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AMENITIES -->
+    <section class="amenities" id="udogodnienia">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Udogodnienia i infrastruktura</div>
+                <h2 class="section-title">Wszystko, czego potrzebuje gość premium</h2>
+                <p class="section-desc">Infrastruktura resortu zaprojektowana tak, aby maksymalizować satysfakcję gości i czas pobytu. Każdy element wspiera obłożenie i cenę za dobę.</p>
+            </div>
+
+            <div class="amenities-grid">
+                <div class="amenity-block">
+                    <img src="freepik_aerial-twilight-photograp_2816523847.png" alt="Krępa Estate — wieczorna atmosfera resortu" class="img-real" style="aspect-ratio: 21/9;">
+                    <div class="amenity-overlay">
+                        <h3>Strefa Wellness & SPA</h3>
+                        <p>Fińska sauna, balia zewnętrzna, strefa relaksu z widokiem na las</p>
+                    </div>
+                </div>
+                <div class="amenity-block">
+                    <img src="freepik_farmtotable-restaurant-in_2816523249.png" alt="Restauracja farm-to-table Krępa Estate" class="img-real" style="aspect-ratio: 21/9;">
+                    <div class="amenity-overlay">
+                        <h3>Restauracja & Bar</h3>
+                        <p>Kuchnia farm-to-table, lokalne składniki, sezonowe menu, bar z polskimi rzemieślniczymi alkoholami</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="amenities-list">
+                <div class="amenity-item">
+                    <div class="a-icon">🚴</div>
+                    <h4>Szlaki rowerowe</h4>
+                    <p>30 km tras bezpośrednio z resortu</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="a-icon">🐎</div>
+                    <h4>Jazda konna</h4>
+                    <p>Stadnina partnerska, 5 min</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="a-icon">🧘</div>
+                    <h4>Strefa jogi</h4>
+                    <p>Platforma na zewnątrz, instruktor</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="a-icon">🏕️</div>
+                    <h4>Ognisko & grill</h4>
+                    <p>Strefy społeczne na świeżym powietrzu</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="a-icon">👶</div>
+                    <h4>Strefa dla dzieci</h4>
+                    <p>Plac zabaw, mini farma, warsztaty</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="a-icon">🏊</div>
+                    <h4>Basen naturalny</h4>
+                    <p>Staw kąpielowy z oczyszczaniem biologicznym</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="a-icon">📶</div>
+                    <h4>Co-working space</h4>
+                    <p>Dla gości pracujących zdalnie</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="a-icon">🅿️</div>
+                    <h4>Parking & EV</h4>
+                    <p>Podziemny parking, ładowarki EV</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUSTAINABILITY -->
+    <section class="sustainability" id="esg">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Zrównoważony rozwój</div>
+                <h2 class="section-title">Budujemy z szacunkiem dla miejsca</h2>
+                <p class="section-desc">ESG nie jest dodatkiem do naszego projektu. Jest jego fundamentem. Inwestycja zgodna z najwyższymi standardami zrównoważonego budownictwa.</p>
+            </div>
+
+            <div class="sustain-grid">
+                <div class="sustain-card">
+                    <div class="s-icon">🌿</div>
+                    <h3>Materiały naturalne</h3>
+                    <p>Drewno z certyfikowanych polskich tartaków, kamień z lokalnych kamieniołomów, izolacja z wełny drzewnej. Minimalizacja śladu węglowego na etapie budowy.</p>
+                </div>
+                <div class="sustain-card">
+                    <div class="s-icon">⚡</div>
+                    <h3>Energia odnawialna</h3>
+                    <p>Panele fotowoltaiczne na dachach, pompy ciepła, rekuperacja. Cel: 80% energii z OZE w pierwszym roku operacyjnym, 100% do 2029.</p>
+                </div>
+                <div class="sustain-card">
+                    <div class="s-icon">💧</div>
+                    <h3>Gospodarka wodna</h3>
+                    <p>System zbierania deszczówki, oczyszczalnia biologiczna, nawadnianie ogrodów z odzysku. Zero odprowadzania ścieków do gruntu.</p>
+                </div>
+                <div class="sustain-card">
+                    <div class="s-icon">🐝</div>
+                    <h3>Bioróżnorodność</h3>
+                    <p>Pasieka na terenie resortu, łąki kwietne zamiast trawników, budki lęgowe, korytarze ekologiczne. Współpraca z lokalnym nadleśnictwem.</p>
+                </div>
+                <div class="sustain-card">
+                    <div class="s-icon">🏗️</div>
+                    <h3>Certyfikacja BREEAM</h3>
+                    <p>Projekt realizowany zgodnie ze standardami BREEAM Communities. Docelowa ocena: Very Good. Audyt środowiskowy na każdym etapie budowy.</p>
+                </div>
+                <div class="sustain-card">
+                    <div class="s-icon">🤝</div>
+                    <h3>Społeczność lokalna</h3>
+                    <p>Zatrudnienie lokalne, współpraca z gospodarstwami, warsztaty dla mieszkańców. Resort jako silnik rozwoju, nie enklawa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="timeline-section" id="harmonogram">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Harmonogram realizacji</div>
+                <h2 class="section-title">Od wizji do klucza</h2>
+                <p class="section-desc">Projekt podzielony na 5 faz, z jasno zdefiniowanymi kamieniami milowymi i transparentnym raportowaniem dla inwestorów.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item active">
+                    <div class="tl-dot"></div>
+                    <div class="tl-content">
+                        <div class="tl-date">Q2 2026</div>
+                        <h4 class="tl-title">Faza I: Pre-development</h4>
+                        <div class="tl-desc">Analiza due diligence, uzyskanie pozwolenia na budowę, projekt architektoniczny, otwarcie sprzedaży jednostek inwestycyjnych w pre-sale.</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-content">
+                        <div class="tl-date">Q4 2026</div>
+                        <h4 class="tl-title">Faza II: Budowa infrastruktury</h4>
+                        <div class="tl-desc">Prace ziemne, drogi dojazdowe, przyłącza mediów, fundamenty. Raport postępu dla inwestorów co miesiąc.</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-content">
+                        <div class="tl-date">Q2 2027</div>
+                        <h4 class="tl-title">Faza III: Budowa budynków</h4>
+                        <div class="tl-desc">Konstrukcja budynków głównych, wykończenie apartamentów, instalacja systemów OZE. Wizytacje terenowe dla inwestorów.</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-content">
+                        <div class="tl-date">Q4 2027</div>
+                        <h4 class="tl-title">Faza IV: Wyposażenie i testy</h4>
+                        <div class="tl-desc">Wyposażenie wnętrz, zagospodarowanie terenu, testy systemów, certyfikacja. Soft opening dla inwestorów.</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="tl-dot"></div>
+                    <div class="tl-content">
+                        <div class="tl-date">Q1 2028</div>
+                        <h4 class="tl-title">Faza V: Grand Opening</h4>
+                        <div class="tl-desc">Oficjalne otwarcie, uruchomienie programu najmu, pierwsze rezerwacje gości. Początek generowania przychodu dla inwestorów.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team" id="zespol">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Zespół projektu</div>
+                <h2 class="section-title">Ludzie z doświadczeniem, nie z folderów</h2>
+                <p class="section-desc">Za projektem stoją praktycy rynku nieruchomości i hotelarstwa, nie korporacyjni konsultanci. Każdy z nas ma skórę w grze.</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="img-placeholder">
+                            <div class="ph-icon" style="font-size: 1.5rem">👤</div>
+                            <div class="ph-size" style="font-size: 0.5rem">1:1</div>
+                        </div>
+                    </div>
+                    <h3>Imię Nazwisko</h3>
+                    <div class="team-role">CEO & Współzałożyciel</div>
+                    <p>15 lat doświadczenia w inwestycjach nieruchomościowych. Portfolio: 12 zrealizowanych projektów, 340 jednostek. Wizjoner projektu Krępa Estate.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="img-placeholder">
+                            <div class="ph-icon" style="font-size: 1.5rem">👤</div>
+                            <div class="ph-size" style="font-size: 0.5rem">1:1</div>
+                        </div>
+                    </div>
+                    <h3>Imię Nazwisko</h3>
+                    <div class="team-role">COO & Współzałożyciel</div>
+                    <p>Ekspert w zarządzaniu obiektami hotelowymi. Były dyrektor operacyjny w sieci boutique hoteli. Odpowiada za model operacyjny i program najmu.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <div class="img-placeholder">
+                            <div class="ph-icon" style="font-size: 1.5rem">👤</div>
+                            <div class="ph-size" style="font-size: 0.5rem">1:1</div>
+                        </div>
+                    </div>
+                    <h3>Imię Nazwisko</h3>
+                    <div class="team-role">Główny Architekt</div>
+                    <p>Laureat nagrody SARP. Specjalizacja: architektura zrównoważona w kontekście wiejskim. Autor koncepcji architektonicznej Krępa Estate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="galeria">
+        <div class="section-header">
+            <div class="section-label">Galeria wizualizacji</div>
+            <h2 class="section-title">Zobacz przyszłość Krępy</h2>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item ratio-21-9">
+                <img src="hero_widok-z-drona-na-boutique_2816468827.png" alt="Krępa Estate — widok z drona" class="img-real">
+            </div>
+            <div class="gallery-item ratio-4-5">
+                <div class="img-placeholder">
+                    <div class="ph-icon">📸</div>
+                    <div class="ph-label">Taras poranny [4:5]</div>
+                </div>
+            </div>
+            <div class="gallery-item ratio-1-1">
+                <div class="img-placeholder">
+                    <div class="ph-icon">📸</div>
+                    <div class="ph-label">Detal apartamentu [1:1]</div>
+                </div>
+            </div>
+            <div class="gallery-item ratio-4-3">
+                <img src="freepik_candlelit-dinner-scene-in_2816519656.png" alt="Kolacja przy świecach — Krępa Estate" class="img-real">
+            </div>
+            <div class="gallery-item ratio-1-1">
+                <div class="img-placeholder">
+                    <div class="ph-icon">📸</div>
+                    <div class="ph-label">Wellness wieczór [1:1]</div>
+                </div>
+            </div>
+            <div class="gallery-item ratio-16-9">
+                <div class="img-placeholder">
+                    <div class="ph-icon">📸</div>
+                    <div class="ph-label">Las o świcie [16:9]</div>
+                </div>
+            </div>
+            <div class="gallery-item ratio-4-3">
+                <div class="img-placeholder">
+                    <div class="ph-icon">📸</div>
+                    <div class="ph-label">Lobby resortu [4:3]</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINANCIAL MODEL -->
+    <section class="financial" id="model-finansowy">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Szczegóły finansowe</div>
+                <h2 class="section-title">Transparentny model finansowy</h2>
+                <p class="section-desc">Pełna przejrzystość kosztów, przychodów i projekcji. Inwestujesz w realne aktywo z mierzalnym zwrotem.</p>
+            </div>
+
+            <div class="fin-grid">
+                <div class="fin-block">
+                    <h3>Przychody z najmu (na jednostkę Suite Nature, 48 m²)</h3>
+                    <div class="fin-row">
+                        <span class="fin-label">Średnia cena za dobę (sezon wysoki)</span>
+                        <span class="fin-value">650 PLN</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Średnia cena za dobę (sezon niski)</span>
+                        <span class="fin-value">420 PLN</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Prognozowane obłożenie roczne</span>
+                        <span class="fin-value">85%</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Przychód brutto roczny</span>
+                        <span class="fin-value">~167 000 PLN</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Koszty operacyjne (30%)</span>
+                        <span class="fin-value">-50 100 PLN</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Przychód netto roczny</span>
+                        <span class="fin-value">~116 900 PLN</span>
+                    </div>
+                </div>
+                <div class="fin-block">
+                    <h3>Parametry inwestycji</h3>
+                    <div class="fin-row">
+                        <span class="fin-label">Wartość projektu (faza I)</span>
+                        <span class="fin-value">18.5 mln PLN</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Wkład własny deweloper</span>
+                        <span class="fin-value">35%</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Pre-sale wymagany</span>
+                        <span class="fin-value">40% jednostek</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Harmonogram płatności</span>
+                        <span class="fin-value">10/30/30/30</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Rachunek powierniczy</span>
+                        <span class="fin-value">Tak (otwarty)</span>
+                    </div>
+                    <div class="fin-row">
+                        <span class="fin-label">Gwarancja zwrotu</span>
+                        <span class="fin-value">6% min. (24 mies.)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fin-note">
+                <strong>Zastrzeżenie:</strong> Przedstawione projekcje finansowe bazują na analizie porównywalnych obiektów w segmencie premium nature retreat w Polsce i Europie Środkowej. Rzeczywiste wyniki mogą się różnić w zależności od warunków rynkowych, poziomu obłożenia i kosztów operacyjnych. Pełny model finansowy dostępny dla zweryfikowanych inwestorów po podpisaniu NDA.
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / CTA -->
+    <section class="contact" id="kontakt">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Zainteresowany?</div>
+                <h2 class="section-title">Zarezerwuj swoją jednostkę</h2>
+                <p class="section-desc">Pozostało 16 z 24 jednostek. Wypełnij formularz, a nasz doradca inwestycyjny skontaktuje się z Tobą w ciągu 24 godzin.</p>
+            </div>
+
+            <div class="contact-form">
+                <div class="form-row">
+                    <input type="text" class="form-input" placeholder="Imię i nazwisko">
+                    <input type="email" class="form-input" placeholder="Adres e-mail">
+                </div>
+                <div class="form-row">
+                    <input type="tel" class="form-input" placeholder="Numer telefonu">
+                    <select class="form-input form-select">
+                        <option value="" disabled selected>Interesujący typ apartamentu</option>
+                        <option value="studio">Studio Forest View (32 m², od 389 000 PLN)</option>
+                        <option value="suite">Suite Nature (48 m², od 549 000 PLN)</option>
+                        <option value="premium">Premium Retreat (65 m², od 729 000 PLN)</option>
+                        <option value="penthouse">Penthouse Canopy (95 m², od 1 190 000 PLN)</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <select class="form-input form-select">
+                        <option value="" disabled selected>Budżet inwestycyjny</option>
+                        <option value="400">Do 400 000 PLN</option>
+                        <option value="600">400 000 - 600 000 PLN</option>
+                        <option value="800">600 000 - 800 000 PLN</option>
+                        <option value="1000">800 000 - 1 200 000 PLN</option>
+                        <option value="1200+">Powyżej 1 200 000 PLN</option>
+                    </select>
+                    <select class="form-input form-select">
+                        <option value="" disabled selected>Jak się o nas dowiedziałeś?</option>
+                        <option value="social">Social media</option>
+                        <option value="google">Wyszukiwarka Google</option>
+                        <option value="referral">Polecenie</option>
+                        <option value="press">Artykuł prasowy</option>
+                        <option value="event">Targi / Event</option>
+                        <option value="other">Inne</option>
+                    </select>
+                </div>
+                <div class="form-row full">
+                    <textarea class="form-input" placeholder="Dodatkowe pytania lub uwagi (opcjonalnie)"></textarea>
+                </div>
+                <button class="form-submit">Poproś o szczegóły inwestycji</button>
+                <div class="contact-note">
+                    Wypełniając formularz wyrażasz zgodę na kontakt ze strony Krępa Estate Sp. z o.o. w celu przedstawienia oferty inwestycyjnej. Twoje dane są chronione zgodnie z RODO.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEGAL -->
+    <section class="legal">
+        <div class="legal-content">
+            <h4>Informacje prawne</h4>
+            <p>
+                Niniejsza strona internetowa ma charakter informacyjny i nie stanowi oferty w rozumieniu art. 66 Kodeksu Cywilnego ani publicznego oferowania papierów wartościowych. Prezentowane wizualizacje, projekcje finansowe i opisy mają charakter poglądowy i mogą ulec zmianie. Wszelkie decyzje inwestycyjne powinny być podejmowane po zapoznaniu się z pełną dokumentacją projektu, w tym z prospektem informacyjnym, wzorem umowy deweloperskiej oraz operatem szacunkowym. Inwestowanie w nieruchomości wiąże się z ryzykiem, w tym ryzykiem utraty części lub całości zainwestowanego kapitału. Historyczne stopy zwrotu nie gwarantują przyszłych wyników.
+            </p>
+            <div class="legal-grid">
+                <div>
+                    <p><strong>Inwestor:</strong> Krępa Estate Sp. z o.o.<br>
+                    KRS: 0000XXXXXX | NIP: XXX-XXX-XX-XX<br>
+                    ul. Leśna 1, Krępa, woj. mazowieckie<br>
+                    Kapitał zakładowy: 500 000 PLN (wpłacony w całości)</p>
+                </div>
+                <div>
+                    <p><strong>Rachunek powierniczy:</strong> Bank PEKAO S.A.<br>
+                    Nr rachunku: XX XXXX XXXX XXXX XXXX XXXX XXXX<br>
+                    Środki inwestorów chronione zgodnie z Ustawą Deweloperską z dnia 20 maja 2021 r.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="nav-logo">
+                    Krępa Estate
+                    <span>Boutique Investment Resort</span>
+                </div>
+                <p>Ekskluzywna inwestycja w naturę. 90 minut od Warszawy, lata świetlne od hałasu.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Nawigacja</h4>
+                <ul>
+                    <li><a href="#wizja">Wizja projektu</a></li>
+                    <li><a href="#lokalizacja">Lokalizacja</a></li>
+                    <li><a href="#inwestycja">Model inwestycyjny</a></li>
+                    <li><a href="#apartamenty">Apartamenty</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Oferta</h4>
+                <ul>
+                    <li><a href="#udogodnienia">Udogodnienia</a></li>
+                    <li><a href="#esg">Zrównoważony rozwój</a></li>
+                    <li><a href="#harmonogram">Harmonogram</a></li>
+                    <li><a href="#model-finansowy">Model finansowy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <ul>
+                    <li><a href="mailto:inwestycje@krepa-estate.pl">inwestycje@krepa-estate.pl</a></li>
+                    <li><a href="tel:+48123456789">+48 123 456 789</a></li>
+                    <li><a href="#kontakt">Formularz kontaktowy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Krępa Estate Sp. z o.o. Wszelkie prawa zastrzeżone.</p>
+            <div class="footer-social">
+                <a href="#" title="Instagram">IG</a>
+                <a href="#" title="Facebook">FB</a>
+                <a href="#" title="LinkedIn">IN</a>
+                <a href="#" title="YouTube">YT</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- COOKIE BAR -->
+    <div class="cookie-bar" id="cookieBar">
+        <p>Ta strona wykorzystuje pliki cookies w celu zapewnienia najwyższej jakości usług. Kontynuując przeglądanie, zgadzasz się na ich użycie.</p>
+        <div class="cookie-btns">
+            <button class="cookie-btn cookie-decline" onclick="document.getElementById('cookieBar').classList.add('hidden')">Odrzuć</button>
+            <button class="cookie-btn cookie-accept" onclick="document.getElementById('cookieBar').classList.add('hidden')">Akceptuję</button>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Sticky nav on scroll
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply to all major sections
+        document.querySelectorAll('.section-header, .invest-card, .unit-card, .sustain-card, .team-card, .amenity-item, .timeline-item, .fin-block').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Animated counter for hero metrics
+        function animateValue(element, start, end, duration, suffix = '') {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const current = Math.floor(progress * (end - start) + start);
+                element.textContent = current + suffix;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    element.textContent = end + suffix;
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Counter animation trigger
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Counters already show static values — animation optional
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        const heroSection = document.querySelector('.hero');
+        if (heroSection) heroObserver.observe(heroSection);
+    </script>
+
+</body>
+</html>
